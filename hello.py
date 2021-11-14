@@ -5,8 +5,6 @@ from flask import (
     redirect
 )
 
-import sys
-sys.path.append("\PyPs\CzerePych\Project1")
 
 from form import contact_form
 
