@@ -1,3 +1,6 @@
+from .FormModule.human import Human
+from .contact_form import contact_form
+import sys
 from flask import (
     Flask, 
     url_for, 
@@ -5,13 +8,8 @@ from flask import (
     redirect
 )
 
-import sys
-sys.path.append("\PyPs\CzerePych\Project1")
-
-from form import contact_form
-
-
 app = Flask(__name__)
+app.run(debug=True)
 @app.route('/')
 def hello_world():
     return 'Hello world!'

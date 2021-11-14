@@ -10,14 +10,6 @@ class contact_form(FlaskForm):
 
     )
 
-    #email = StringField(
-     #   "Email",
-      #  [
-       # Email(message=("Not a valid email address.")),
-       # DataRequired()
-       # ]
-    #)
-
     body = TextAreaField(
         "Message",
         [
