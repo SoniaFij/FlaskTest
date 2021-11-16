@@ -1,10 +1,12 @@
+from os import name
 from flask import (
     Flask, 
     url_for, 
     render_template, 
     redirect
 )
-from werkzeug import datastructures
+#from werkzeug import datastructures
+from wtforms.validators import Email
 
 
 from .form import contact_form
@@ -42,8 +44,12 @@ def article(article_name):
 def contact():
     cform=contact_form()
     if cform.validate_on_submit():
-        print(f"Name:{cform.name.data}, E-mail:{cform.email.data})
-        message:{cform.message.data}")
+        print(f"Name:{cform.name.data}",
+              "E-mail:{cform.email.data}",
+              "message:{cform.message.data}")
+    else:
+        print("Invalid Credentials")
+
     return render_template("contact.html", form=cform)
 
  

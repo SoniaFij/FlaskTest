@@ -13,8 +13,7 @@ app.secret_key = "any-string-you-want-just-keep-it-secret"
  
 class contact_form(FlaskForm):
     name = StringField(label='Name', validators=[DataRequired()])
-    email = StringField(
-      label='Email', validators=[DataRequired(), Email(granular_message=True)])
+    email = StringField(label='Email', validators=[DataRequired(), Email(granular_message=True)])
     message = StringField(label='Message')
     submit = SubmitField(label="Log In")
 
