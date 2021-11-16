@@ -4,9 +4,10 @@ from flask import (
     render_template, 
     redirect
 )
+from werkzeug import datastructures
 
 
-from form import contact_form
+from .form import contact_form
 
 
 app = Flask(__name__)
@@ -36,15 +37,17 @@ def article(article_name):
   <a href="/">Return back to home page</a>
   '''
 
-@app.route("/contact", methods=["GET", "POST"])
+
+@app.route('/contact', methods=["GET", "POST"])
 def contact():
-    """Standard `contact` form."""
-    form = contact_form()
-    if form.validate_on_submit():
-        return redirect(url_for("success"))
-    return render_template(
-        "contact.jinja2",
-        form=form,
-        template="form-template"
-    )
+    cform=contact_form()
+    if cform.validate_on_submit():
+        print(f"Name:{cform.name.data}, E-mail:{cform.email.data})
+        message:{cform.message.data}")
+    return render_template("contact.html", form=cform)
+
+ 
+ 
+if __name__ == '__main__':
+    app.run(debug=True)
 
