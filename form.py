@@ -4,9 +4,6 @@ from wtforms import StringField, validators, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email
 import email_validator
 
-from flask_wtf import FlaskForm
-from wtforms import StringField, validators, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email
 
 app = Flask(__name__)
 app.secret_key = "any-string-you-want-just-keep-it-secret"
