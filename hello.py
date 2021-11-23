@@ -5,9 +5,11 @@ from flask import (
     Flask, 
     url_for, 
     render_template, 
-    redirect
+    redirect, 
+    request
 )
 from flask.templating import render_template_string
+from wtforms.fields import form
 
 from wtforms.validators import Email
 
@@ -17,6 +19,8 @@ from wtforms import StringField, validators, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email
 import email_validator
 import os
+
+distance = 0.1
 
 HTML_PAGE = '''
 
@@ -58,6 +62,19 @@ def article(article_name):
   return '''
   <a href="/">Return to home page</a>
   '''
+
+@app.route('/threed')
+def threed():
+    global distance
+    return render_template('test_subfolder/page3.html', distance=distance)
+
+@app.route('/setdistance', methods=["POST"])
+def setdistance():
+    global distance
+    distance=float(request.form["distance"])
+    print ("set distance to", distance)
+    return redirect (request.referrer)
+
 
  
 if __name__ == '__main__':
