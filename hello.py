@@ -41,6 +41,10 @@ def test():
 def home():
     return render_template('test_subfolder/page.html')
 
+@app.route('/jinja')
+def jinja():
+    return render_template('test_subfolder/page2.html', status = True, temperature = 24)
+
 
 @app.route('/reporter/<int:reporter_id>')
 def reporter(reporter_id):
